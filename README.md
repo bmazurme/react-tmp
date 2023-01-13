@@ -1,11 +1,15 @@
-# tmp
- react
+### Tech stack
+![React](https://img.shields.io/badge/-React-black?style=flat-square&logo=react)
+![Express](https://img.shields.io/badge/-Express-black?style=flat-square&logo=express)
+![Redux](https://img.shields.io/badge/-Redux-black?style=flat-square&logo=redux)
+![TypeScript](https://img.shields.io/badge/-TypeScript-black?style=flat-square&logo=typescript)
+![Webpack](https://img.shields.io/badge/-Webpack-black?style=flat-square&logo=webpack)
+![Eslint](https://img.shields.io/badge/-Eslint-black?style=flat-square&logo=eslint)
+![Stylelint](https://img.shields.io/badge/-Stylelint-black?style=flat-square&logo=stylelint)
 
-`mkdir -p src/components src/styles www`
-`npm install webpack webpack-cli --save-dev`
-`npm install react react-dom --save`
-`npm install @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev`
-`npm install css-loader style-loader --save-dev`
-`npm install html-webpack-plugin --save-dev`
-`npm install webpack-dev-server --save-dev `
-`npm install path --save-dev`
+### Installation
+- Clone the repository on your computer: `https://github.com/bmazurme/react-tmp.git`
+- Install dependencies: `npm install`
+- Launch: `npm start`
+- run dev: `npm run dev`
+- run build: `npm run build`

@@ -1,11 +1,18 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import './App.css';
+import MainPage from '../../pages/MainPage';
 
-function App() {
+import ErrorBoundaryWrapper from '../core/ErrorBoundaryWrapper';
+
+import '../../index.css';
+
+export default function App() {
   return (
-    <h1>App</h1>
+    <ErrorBoundaryWrapper>
+      <Routes>
+        <Route index element={(<MainPage />)} />
+      </Routes>
+    </ErrorBoundaryWrapper>
   );
 }
-
-export default App;
