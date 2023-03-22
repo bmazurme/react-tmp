@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ntlstl/ntlstl.git"
+    "url": "git+https://github.com/ntlstl/tmp.git"
   },
   "author": "ntlstl",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ntlstl/ntlstl/issues"
+    "url": "https://github.com/ntlstl/tmp/issues"
   },
-  "homepage": "https://github.com/ntlstl/ntlstl#readme",
+  "homepage": "https://github.com/ntlstl/tmp#readme",
   "devDependencies": {
     "@babel/preset-env": "7.20.2",
     "@babel/preset-react": "7.18.6",

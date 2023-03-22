@@ -3,9 +3,6 @@ import React from 'react';
 
 import type { PropsWithChildren } from 'react';
 import { ErrorBoundary, type FallbackProps } from 'react-error-boundary';
-import { Link } from 'react-router-dom';
-
-import { Button } from '../../form-components';
 
 type ErrorBoundaryWrapperProps = PropsWithChildren<unknown>;
 
@@ -18,13 +15,15 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
 
         <div className="error-boundary__block">
           Try to
-          <Button className="button button_reload" onClick={resetErrorBoundary} variant="outline">
+          {/* eslint-disable-next-line react/button-has-type */}
+          <button className="button button_reload" onClick={resetErrorBoundary}>
             Reload app
-          </Button>
+          </button>
           or
-          <Button className="link link_home" onClick={resetErrorBoundary} variant="outline" as={Link} to="/">
+          {/* eslint-disable-next-line react/button-has-type */}
+          <button className="link link_home" onClick={resetErrorBoundary}>
             Go to homepage
-          </Button>
+          </button>
         </div>
       </div>
     </div>

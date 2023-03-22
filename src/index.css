@@ -1,29 +1,8 @@
-@import "./vendor/normalize.css";
-@import "./vendor/fonts.css";
+/*@import "./vendor/normalize.css";*/
+/*@import "./vendor/fonts.css";*/
 
-/* root */
-@import "../blocks/root/root.css";
+/*!* root *!*/
+/*@import "../blocks/root/root.css";*/
 
-/* content */
-@import "../blocks/content/content.css";
-
-/* container */
-@import "../blocks/container/container.css";
-
-/* button */
-@import "../blocks/button/button.css";
-
-/* variables */
-@import "../blocks/_variables.css";
-
-/* error */
-@import "../blocks/error/error.css";
-@import "../blocks/error/__code/error__code.css";
-@import "../blocks/error/__description/error__description.css";
-@import "../blocks/error/__link/error__link.css";
-
-/* error-boundary */
-@import "../blocks/error-boundary/error-boundary.css";
-@import "../blocks/error-boundary/__title/error-boundary__title.css";
-@import "../blocks/error-boundary/__message/error-boundary__message.css";
-@import "../blocks/error-boundary/__block/error-boundary__block.css";
+/*!* variables *!*/
+/*!*@import "../blocks/_variables.css";*!*/
