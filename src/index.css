@@ -2,7 +2,7 @@
 /*@import "./vendor/fonts.css";*/
 
 /*!* root *!*/
-/*@import "../blocks/root/root.css";*/
+/*@import "./blocks/root/root.css";*/
 
 /*!* variables *!*/
-/*!*@import "../blocks/_variables.css";*!*/
+/*!*@import "./blocks/_variables.css";*!*/

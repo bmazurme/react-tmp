@@ -15,6 +15,8 @@
 
 Features:
 - [X] Auth cookies
+- [X] REST API
+- [X] Store
 - [X] Dark&light theme
 - [X] Docker
 

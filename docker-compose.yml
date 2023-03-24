@@ -1,40 +1,92 @@
 version: "3.8"
 
 services:
-  mongodb:
-    image: mongo:6.0.1
-    restart: always
-    ports:
-      - 27017:27017
-    networks:
-      - awesome
+  # mongodb:
+  #   image: mongo:6.0.1
+  #   restart: always
+  #   ports:
+  #     - "27017:27017"
+  #   networks:
+  #     - awesome
 
-  devapi: # back
-    depends_on:
-      - mongodb
-    # platform: linux/amd64
+  # devapi: # back
+  #   depends_on:
+  #     - mongodb
+  #   # platform: linux/amd64
+  #   build:
+  #     context: .
+  #   restart: always
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - DB_HOST=$DB_HOST
+  #     - DB_NAME=$DB_NAME
+  #     - DB_PORT=$DB_PORT
+  #     - NODE_ENV=$NODE_ENV
+  #     - PTH=$PTH
+  #     - PORT=3000
+  #     - EMAIL_USER=$EMAIL_USER
+  #     - EMAIL_PASS=$EMAIL_PASS
+  #     - EMAIL_HOST=$EMAIL_HOST
+  #     - EMAIL_PORT=$EMAIL_PORT
+  #     - EMAIL_FROM=$EMAIL_FROM
+  #     - HOST=$HOST
+  #   networks:
+  #     - awesome
+
+  my-app:
+    image: cr.yandex/${REGISTRY_ID}/tmp:latest
     build:
       context: .
-    restart: always
-    ports:
-      - 3000:3000
     environment:
-      - DB_HOST=$DB_HOST
-      - DB_NAME=$DB_NAME
-      - DB_PORT=$DB_PORT
-      - NODE_ENV=$NODE_ENV
-      - PTH=$PTH
-      - PORT=3000
-      - EMAIL_USER=$EMAIL_USER
-      - EMAIL_PASS=$EMAIL_PASS
-      - EMAIL_HOST=$EMAIL_HOST
-      - EMAIL_PORT=$EMAIL_PORT
-      - EMAIL_FROM=$EMAIL_FROM
-      - HOST=$HOST
+      env_file:
+        .env
+    ports:
+      - "${PORT:-3000}:3000"
+    restart: always
     networks:
       - awesome
 
-  # front
+  nginx:
+    image: nginx
+    restart: always
+    container_name: nginx
+    volumes:
+    #   # - ./docker/nginx/certs:/etc/nginx/certs
+      - ./docker/nginx/core/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/logs/:/var/log/nginx/
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+    depends_on:
+     - my-app
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - awesome
+
+#   certbot:
+#     image: certbot/certbot
+#     container_name: certbot
+#     volumes:
+#       - certbot-etc:/etc/letsencrypt
+#       - certbot-var:/var/lib/letsencrypt
+#       - web-root:/var/www/html
+#     depends_on:
+#       - nginx
+#     command: certonly --webroot --webroot-path=/var/www/html --email str-22@ya.ru --agree-tos --no-eff-email --staging -d ntlstl.dev  -d ntlstl.dev
+#     networks:
+#       - awesome
+
+# volumes:
+#   certbot-etc:
+#   certbot-var:
+#   web-root:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       device: /home/str-22/node_project/views/
+#       o: bind
 
 networks:
   awesome:

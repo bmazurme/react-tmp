@@ -1,7 +1,7 @@
 import express from 'express';
 
-import livereload from 'livereload';
-import connectLivereload from 'connect-livereload';
+// import livereload from 'livereload';
+// import connectLivereload from 'connect-livereload';
 
 import path from 'path';
 import helmet from 'helmet';
@@ -48,17 +48,17 @@ if (process.env.NODE_ENV === 'production') {
   app.use(helmet.contentSecurityPolicy(helmetConfig));
 }
 
-if (process.env.NODE_ENV === 'development') {
-  const liveReloadServer = livereload.createServer();
+// if (process.env.NODE_ENV === 'development') {
+//   const liveReloadServer = livereload.createServer();
 
-  liveReloadServer.server.once('connection', () => {
-    setTimeout(() => {
-      liveReloadServer.refresh('/');
-    }, 100);
-  });
+//   liveReloadServer.server.once('connection', () => {
+//     setTimeout(() => {
+//       liveReloadServer.refresh('/');
+//     }, 100);
+//   });
 
-  app.use(connectLivereload());
-}
+//   app.use(connectLivereload());
+// }
 
 app.use('/static', express.static(path.resolve(process.cwd(), 'static')));
 app.use(express.static(path.resolve(__dirname), { extensions: ['css', 'js'] }));
