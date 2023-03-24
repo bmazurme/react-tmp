@@ -14,3 +14,5 @@
 - - [X] ![Stylelint](https://img.shields.io/badge/-Stylelint-black?style=flat-square&logo=stylelint)
 - - [X] ![Webpack](https://img.shields.io/badge/-Webpack-black?style=flat-square&logo=webpack)
 - - [X] ![PostCSS](https://img.shields.io/badge/-PostCSS-black?style=flat-square&logo=postcss)
+
+- [X] ![TypeScript](https://img.shields.io/badge/-TypeScript-black?style=flat-square&logo=typescript) branch -> ts-ex-wp
