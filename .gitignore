@@ -28,3 +28,5 @@ error.log
 dist/index.html
 dist/bundle.js
 access.log
+
+*.pem

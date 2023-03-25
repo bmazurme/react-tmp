@@ -1,5 +1,5 @@
 import express from 'express';
-
+import https from 'https';
 // import livereload from 'livereload';
 // import connectLivereload from 'connect-livereload';
 
@@ -9,6 +9,7 @@ import bodyParser from 'body-parser';
 import { config as dotEnvConfig } from 'dotenv';
 import cors from 'cors';
 
+import fs from 'fs';
 import { requestLogger, errorLogger } from './middlewares/logger';
 import errorHandler from './middlewares/errorHandler';
 
@@ -17,6 +18,21 @@ import corsOptions from './utils/corsOptions';
 import { NotFoundError } from './errors';
 
 import limiter from './utils/limiter';
+
+const credentials = {
+  key: fs.readFileSync(
+    '/etc/letsencrypt/live/ntlstl.dev/privkey.pem',
+    'utf8',
+  ),
+  cert: fs.readFileSync(
+    '/etc/letsencrypt/live/ntlstl.dev/cert.pem',
+    'utf8',
+  ),
+  ca: fs.readFileSync(
+    '/etc/letsencrypt/live/ntlstl.dev/fullchain.pem',
+    'utf8',
+  ),
+};
 
 dotEnvConfig();
 
@@ -74,6 +90,6 @@ app.use('*', () => {
 app.use(errorLogger);
 app.use(errorHandler);
 
-app.listen(port, () => {
+https.createServer(credentials, app).listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
